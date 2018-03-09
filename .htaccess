@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# L   = (last - stop processing rules)
+# QSA = (append query string from request to substituted URL)
+# R   = (301 (permanent redirect to new URL) )
+
+# Rewrite the URL to output a clean URL
+# Based on the query parameters
+RewriteRule ^(news)/([a-zA-Z0-9-]+)$ news.php?p=$1&q=$2 [L,QSA]
+
+# Rewrite the landing page to the first pagination page
+RewriteRule ^news/?$ http://games/news/1 [L,R=301]
